@@ -1,0 +1,42 @@
+<app-menu-layout>
+    <div class="container my-4">
+      <h2>Generador de Reportes</h2>
+      <p>Selecciona el tipo de reporte y el rango de fechas para generar la información.</p>
+  
+      <form (ngSubmit)="generarReporte()" class="mb-4">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-4">
+            <label for="tipoReporte" class="form-label">Tipo de Reporte</label>
+            <select id="tipoReporte" class="form-select" [(ngModel)]="tipoReporte" name="tipoReporte" required>
+              <option *ngFor="let tipo of tiposReportes" [value]="tipo">{{ tipo }}</option>
+            </select>
+          </div>
+  
+          <div class="col-md-8 d-flex align-items-center gap-3">
+            <div>
+              <label for="fechaInicio" class="form-label">Fecha Inicio</label>
+              <input type="date" id="fechaInicio" class="form-control" [(ngModel)]="fechaInicio" name="fechaInicio" required />
+            </div>
+  
+            <div>
+              <label for="fechaFin" class="form-label">Fecha Fin</label>
+              <input type="date" id="fechaFin" class="form-control" [(ngModel)]="fechaFin" name="fechaFin" required />
+            </div>
+  
+            <div>
+              <button type="submit" class="btn btn-primary mt-4">Generar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+  
+      <div *ngIf="resultadoReporte" class="alert alert-info d-flex align-items-center justify-content-between">
+        <span>{{ resultadoReporte }}</span>
+        <div>
+          <button class="btn btn-success me-2" (click)="descargarPDF()">Descargar PDF</button>
+          <button class="btn btn-secondary" (click)="limpiarReporte()">Limpiar</button>
+        </div>
+      </div>
+    </div>
+  </app-menu-layout>
+  

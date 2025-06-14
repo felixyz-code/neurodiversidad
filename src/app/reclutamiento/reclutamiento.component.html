@@ -1,0 +1,88 @@
+<app-menu-layout>
+    <div class="container my-4">
+      <h2>Gestión de Reclutamiento</h2>
+      <p>Consulta, registra y edita reclutados</p>
+  
+      <table class="table table-bordered table-striped mb-4">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Tipo de Servicio</th>
+            <th *ngIf="true">Fecha Inicio</th>
+            <th *ngIf="true">Fecha Salida</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let r of reclutados; let i = index">
+            <td>{{ r.nombre }}</td>
+            <td>{{ r.tipoServicio }}</td>
+            <td>{{ r.fechaInicio ? (r.fechaInicio | date: 'yyyy-MM-dd') : '-' }}</td>
+            <td>{{ r.fechaSalida ? (r.fechaSalida | date: 'yyyy-MM-dd') : '-' }}</td>
+            <td>{{ r.estatus }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary me-1" (click)="editarReclutado(i)">Editar</button>
+              <button class="btn btn-sm btn-danger" (click)="eliminarReclutado(i)">Eliminar</button>
+            </td>
+          </tr>
+          <tr *ngIf="reclutados.length === 0">
+            <td colspan="6" class="text-center text-muted">No hay reclutados</td>
+          </tr>
+        </tbody>
+      </table>
+  
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">{{ reclutadoEditandoIndex !== null ? 'Editar reclutado' : 'Registrar nuevo reclutado' }}</h5>
+          <form (ngSubmit)="agregarReclutado()">
+            <div class="row g-3">
+  
+              <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Nombre" [(ngModel)]="nuevoReclutado.nombre" name="nombre" required />
+              </div>
+  
+              <div class="col-md-6">
+                <select class="form-select" [(ngModel)]="nuevoReclutado.tipoServicio" name="tipoServicio" required>
+                  <option *ngFor="let tipo of tiposServicio" [value]="tipo">{{ tipo }}</option>
+                </select>
+              </div>
+  
+              <!-- Mostrar fechas solo para Practicante y Servicio social -->
+              <div class="col-md-6" *ngIf="nuevoReclutado.tipoServicio !== 'Voluntarios'">
+                <label>Fecha Inicio</label>
+                <input type="date" class="form-control" [(ngModel)]="nuevoReclutado.fechaInicio" name="fechaInicio" required />
+              </div>
+  
+              <div class="col-md-6" *ngIf="nuevoReclutado.tipoServicio !== 'Voluntarios'">
+                <label>Fecha Salida</label>
+                <input type="date" class="form-control" [(ngModel)]="nuevoReclutado.fechaSalida" name="fechaSalida" required />
+              </div>
+  
+              <div class="col-md-6" *ngIf="nuevoReclutado.tipoServicio === 'Voluntarios'">
+                <!-- Solo estatus para voluntarios -->
+                <label>Estatus</label>
+                <select class="form-select" [(ngModel)]="nuevoReclutado.estatus" name="estatus" required>
+                  <option *ngFor="let est of estatusDisponibles" [value]="est">{{ est }}</option>
+                </select>
+              </div>
+  
+              <div class="col-md-6" *ngIf="nuevoReclutado.tipoServicio !== 'Voluntarios'">
+                <label>Estatus</label>
+                <select class="form-select" [(ngModel)]="nuevoReclutado.estatus" name="estatus" required>
+                  <option *ngFor="let est of estatusDisponibles" [value]="est">{{ est }}</option>
+                </select>
+              </div>
+  
+              <div class="col-12 text-end">
+                <button type="submit" class="btn btn-primary me-2">{{ reclutadoEditandoIndex !== null ? 'Guardar cambios' : 'Registrar reclutado' }}</button>
+                <button *ngIf="reclutadoEditandoIndex !== null" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+              </div>
+  
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </app-menu-layout>
+  

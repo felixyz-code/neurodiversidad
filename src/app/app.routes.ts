@@ -4,6 +4,8 @@ import { DashboardPage } from './dashboard/dashboard.component';
 import { CitasPage } from './citas/citas.component';
 import { UsuariosPage } from './usuarios/usuarios.component';
 import { FinanzasPage } from './finanzas/finanzas.component';
+import { ReclutamientoPage } from './reclutamiento/reclutamiento.component';
+import { ReportesPage } from './reportes/reportes.component';
 
 export const routes: Routes = [
     {
@@ -22,15 +24,22 @@ export const routes: Routes = [
       {
         path: 'citas',
         component: CitasPage
-      }
-      ,
+      },
       {
         path: 'usuarios',
         component: UsuariosPage
-      } ,
+      },
       {
         path: 'finanzas',
         component: FinanzasPage
+      },
+      {
+        path: 'reclutamiento',
+        component: ReclutamientoPage
+      },
+      {
+        path: 'reportes',
+        component: ReportesPage
       }
 ];
 

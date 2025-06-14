@@ -21,7 +21,7 @@ export class MenuLayoutComponent {
 
   isCollapsed = true;
   userMenuCollapsed = true;
-  usuario = { nombre: 'Juan Pérez' };
+  usuario = { nombre: 'Elda Lupian' };
 
   toggleMenu() {
     this.isCollapsed = !this.isCollapsed;
