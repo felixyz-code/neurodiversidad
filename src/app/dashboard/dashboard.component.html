@@ -1,0 +1,75 @@
+<app-menu-layout>
+
+    <div class="d-flex">
+    
+        <!-- Contenido principal -->
+        <main class="flex-grow-1 p-4 dashboard position-relative">
+    
+            <!-- Contenido Dashboard -->
+            <h2 class="mb-4">Panel de control</h2>
+    
+            <!-- Tarjetas resumen -->
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card summary-card bg-primary text-white shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Citas hoy</h5>
+                            <p class="card-text fs-4">10</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card summary-card bg-success text-white shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios activos</h5>
+                            <p class="card-text fs-4">58</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card summary-card bg-warning text-dark shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Avisos</h5>
+                            <p class="card-text fs-4">3</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card summary-card bg-info text-white shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Sesiones programadas</h5>
+                            <p class="card-text fs-4">7</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Gráfico y avisos -->
+            <div class="row mt-5">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Estadísticas mensuales</h5>
+                            <div class="chart-placeholder text-muted d-flex justify-content-center align-items-center">
+                                (Aquí irá un gráfico)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">Avisos recientes</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">🧠 Taller sensorial hoy a las 4PM</li>
+                                <li class="list-group-item">🎉 Evento especial este sábado</li>
+                                <li class="list-group-item">📝 Recuerda actualizar tu perfil</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</app-menu-layout>

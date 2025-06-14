@@ -1,0 +1,15 @@
+.modal-backdrop {
+    backdrop-filter: blur(2px);
+  }
+  
+  .modal .form-label {
+    font-weight: 500;
+  }
+  
+  .card {
+    transition: transform 0.2s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-4px);
+  }

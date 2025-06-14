@@ -1,0 +1,60 @@
+<!-- Navbar para móviles -->
+<nav class="navbar navbar-dark bg-dark d-lg-none px-3">
+    <a class="navbar-brand" href="#">Neurodiversidad</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="!isCollapsed"
+      aria-controls="smallMenu"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+  
+  <!-- Menú colapsable para móviles -->
+  <div [ngbCollapse]="isCollapsed" class="bg-dark text-white p-3 d-lg-none" id="smallMenu">
+    <ul class="nav flex-column">
+      <li class="nav-item"><a routerLink="/dashboard" class="nav-link text-white">🏠 Dashboard</a></li>
+      <li class="nav-item"><a routerLink="/citas" class="nav-link text-white">📅 Citas</a></li>
+      <li class="nav-item"><a routerLink="/usuarios" class="nav-link text-white">👥 Usuarios</a></li>
+      <li class="nav-item"><a routerLink="/finanzas" class="nav-link text-white">💰 Finanzas</a></li>
+      <li class="nav-item"><a routerLink="/calendario" class="nav-link text-white">🗓 Calendario</a></li>
+      <li class="nav-item"><a routerLink="/reportes" class="nav-link text-white">📊 Reportes</a></li>
+      <li class="nav-item"><a routerLink="/configuracion" class="nav-link text-white">⚙ Configuración</a></li>
+    </ul>
+  </div>
+  
+  <!-- Layout principal -->
+  <div class="d-flex">
+    <!-- Sidebar para pantallas grandes -->
+    <aside class="sidebar d-none d-lg-block bg-dark text-white vh-100 p-3">
+      <h4 class="fw-bold mb-4">Neurodiversidad</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item"><a routerLink="/dashboard" class="nav-link text-white">🏠 Dashboard</a></li>
+        <li class="nav-item"><a routerLink="/citas" class="nav-link text-white">📅 Citas</a></li>
+        <li class="nav-item"><a routerLink="/usuarios" class="nav-link text-white">👥 Usuarios</a></li>
+        <li class="nav-item"><a routerLink="/finanzas" class="nav-link text-white">💰 Finanzas</a></li>
+        <li class="nav-item"><a routerLink="/calendario" class="nav-link text-white">🗓 Calendario</a></li>
+        <li class="nav-item"><a routerLink="/reportes" class="nav-link text-white">📊 Reportes</a></li>
+        <li class="nav-item"><a routerLink="/configuracion" class="nav-link text-white">⚙ Configuración</a></li>
+      </ul>
+    </aside>
+  
+    <!-- Contenido principal con slot -->
+    <main class="flex-grow-1 p-4 dashboard position-relative">
+      <!-- Menú usuario -->
+      <div class="user-menu-toggle position-absolute top-0 end-0 m-3" style="z-index: 1100;">
+        <button class="btn btn-outline-secondary btn-sm" (click)="toggleUserMenu()">
+          {{ usuario.nombre }}
+        </button>
+        <div *ngIf="!userMenuCollapsed" class="user-menu-dropdown bg-light shadow rounded mt-1 p-2">
+          <button class="btn btn-danger btn-sm w-100" (click)="cerrarSesion()">Cerrar sesión</button>
+        </div>
+      </div>
+  
+      <!-- Contenido inyectado -->
+      <ng-content></ng-content>
+    </main>
+  </div>  

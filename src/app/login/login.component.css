@@ -1,0 +1,24 @@
+.login-container {
+    background-color: #f0f2f5; /* fondo general */
+  }
+  
+  .login-box {
+    max-width: 900px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+  }
+  
+  .bg-light-blue {
+    background-color: #ffffff; /* azul suave para el fondo del logo */
+  }
+  
+  @media (max-width: 768px) {
+    .login-box {
+      flex-direction: column;
+    }
+  
+    .bg-light-blue {
+      order: -1; /* muestra el logo arriba en pantallas pequeñas */
+    }
+  }

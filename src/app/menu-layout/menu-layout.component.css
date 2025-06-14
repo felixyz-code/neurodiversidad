@@ -1,0 +1,42 @@
+.sidebar {
+    width: 220px;
+    position: sticky;
+    top: 0;
+  }
+  
+  .sidebar .nav-link {
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar .nav-link:hover,
+  .sidebar .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dashboard {
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 991px) {
+    .dashboard {
+      margin-top: 10px;
+    }
+  }
+  
+  .user-menu-toggle button {
+    min-width: 100px;
+  }
+  
+  .user-menu-dropdown {
+    position: absolute;
+    right: 0;
+    z-index: 1050;
+    width: 150px;
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 0.15);
+  }
+  

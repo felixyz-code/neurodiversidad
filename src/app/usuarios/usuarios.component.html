@@ -1,0 +1,137 @@
+<app-menu-layout>
+    <div class="d-flex">
+      <main class="flex-grow-1 p-4 position-relative">
+        <div class="container my-4">
+          <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+            <div>
+              <h2 class="mb-0">Gestión de usuarios</h2>
+              <p class="text-muted">Consulta, registra y edita usuarios</p>
+            </div>
+          </div>
+  
+          <div class="row mb-3">
+            <div class="col-md-4 mb-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Buscar por nombre"
+                [(ngModel)]="searchTerm"
+              />
+            </div>
+          </div>
+  
+          <div class="table-responsive mb-4">
+            <table class="table table-bordered table-striped">
+              <thead class="table-light">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Rol</th>
+                  <th>Usuario</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let u of usuariosFiltrados; let i = index">
+                  <td>{{ u.nombre }}</td>
+                  <td>{{ u.correo }}</td>
+                  <td>{{ u.rol }}</td>
+                  <td>{{ u.usuario }}</td>
+                  <td>
+                    <button class="btn btn-sm btn-primary me-1" (click)="editarUsuario(i)">
+                      Editar
+                    </button>
+                    <button class="btn btn-sm btn-danger" (click)="eliminarUsuario(i)">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="usuariosFiltrados.length === 0">
+                  <td colspan="5" class="text-center text-muted">No hay usuarios</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">
+                {{ usuarioEditandoIndex !== null ? 'Editar usuario' : 'Registrar nuevo usuario' }}
+              </h5>
+              <form (ngSubmit)="agregarUsuario()">
+                <div class="row g-3">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nombre"
+                      [(ngModel)]="nuevoUsuario.nombre"
+                      name="nombre"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Correo"
+                      [(ngModel)]="nuevoUsuario.correo"
+                      name="correo"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <select
+                      class="form-select"
+                      [(ngModel)]="nuevoUsuario.rol"
+                      name="rol"
+                      required
+                    >
+                      <option value="" disabled selected>Seleccionar rol</option>
+                      <option *ngFor="let rol of rolesDisponibles" [value]="rol">
+                        {{ rol }}
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Nombre de usuario"
+                      [(ngModel)]="nuevoUsuario.usuario"
+                      name="usuario"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="password"
+                      class="form-control"
+                      placeholder="Contraseña"
+                      [(ngModel)]="nuevoUsuario.contrasena"
+                      name="contrasena"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-12 text-end">
+                    <button type="submit" class="btn btn-primary me-2">
+                      {{ usuarioEditandoIndex !== null ? 'Guardar cambios' : 'Registrar usuario' }}
+                    </button>
+                    <button
+                      *ngIf="usuarioEditandoIndex !== null"
+                      type="button"
+                      class="btn btn-secondary"
+                      (click)="cancelarEdicion()"
+                    >
+                      Cancelar
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </app-menu-layout>
+  
