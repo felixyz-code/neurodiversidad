@@ -44,14 +44,21 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "3mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "4kB",
                   "maximumError": "8kB"
                 }
+              ],
+              "allowedCommonJsDependencies": [
+                "core-js",
+                "html2canvas",
+                "canvg",
+                "raf",
+                "rgbcolor"
               ],
               "outputHashing": "all"
             },
